@@ -1,3 +1,14 @@
+.row__title {
+    margin-left: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    color:whitesmoke;
+}
+
+.row__title:hover {
+    color:red;
+}
+
 .row{
     margin-left:20px;
     margin-top:10px;
