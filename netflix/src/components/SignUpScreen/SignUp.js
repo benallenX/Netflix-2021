@@ -4,30 +4,47 @@ import {auth} from '../fire'
 
 const SignUp = () => {
     const emailRef = useRef(null)
-    const password = useRef(null)
+    const passwordRef = useRef(null)
 
 
     const register = (e) => {
         e.preventDefault();
-        auth.createUserWithEmailAndPassword()
+        auth.createUserWithEmailAndPassword(
+            emailRef.current.value,
+            passwordRef.current.value
+        ).then((authUser) => {
+            console.log(authUser)
+        })
+        .catch((error) => {
+            alert(error.message)
+        })
     }
 
     const signIn = e => {
         e.preventDefault();
+
+        auth.signInWithEmailAndPassword(
+            emailRef.current.value,
+            passwordRef.current.value
+        ).then((authUser) => {
+            console.log(authUser)
+        }).catch((error) => {
+            alert(error.message)
+        })
     }
 
 
     return (
         <div className='signUp'>
             <form>
-                <input type='email' placeholder='Email' />
-                <input type='password' placeholder='password' />
+                <input ref={emailRef} type='email' placeholder='Email' />
+                <input  ref={passwordRef} type='password' placeholder='password' />
                 <button type='submit' onClick={signIn}>
                     Sign In
                     </button>
                 <h4>
                     <span className='signUp__gray'>New to Netflix ? </span>
-                    <span className="signUp__link" OnClick={register}>Sign Up now.</span>
+                    <span className="signUp__link" onClick={register}>Sign Up now.</span>
                 </h4>
             </form>
         </div>
