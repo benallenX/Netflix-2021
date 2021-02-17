@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import './Login.css'
-import SignUp from '../Pages/SignUpScreen/SignUp'
+import SignUp from '../SignUpScreen/SignUp'
 
 const Login = () => {
     const [signIn, setSignIn] =useState(false)
